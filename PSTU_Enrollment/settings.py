@@ -12,32 +12,35 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load environment variables from .env file
+load_dotenv(BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-pu3q!cs647d*g7vk%wse(*k*r4ji7gudn!e_jc)q&(321taf22'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','16cd-103-133-254-22.ngrok-free.app']
+# ALLOWED_HOSTS = ['127.0.0.1','16cd-103-133-254-22.ngrok-free.app']
+
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 # For ngrok
-CSRF_TRUSTED_ORIGINS = [
-    'https://16cd-103-133-254-22.ngrok-free.app',
-    'https://sandbox.sslcommerz.com',
-    'https://securepay.sslcommerz.com',
-]
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',')
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'clearcache',
     'django.contrib.admin',
@@ -95,12 +98,19 @@ DATABASES = {
         
         # For XAMPP(MariaDB - A fork of MySQL)
         # =====================================
-        'ENGINE': 'django.db.backends.mysql',    # MySQL backend for Django
-        'NAME': 'pstu_enrollment',               # Database name
-        'USER': 'root',                          # Default MySQL username in XAMPP
-        'PASSWORD': '',                          # Leave it empty for root, or add your password if you set one
-        'HOST': 'localhost',                     # Host (localhost for XAMPP)
-        'PORT': '3306',                          # Default MySQL port in XAMPP
+        # 'ENGINE': 'django.db.backends.mysql',    # MySQL backend for Django
+        # 'NAME': 'pstu_enrollment',               # Database name
+        # 'USER': 'root',                          # Default MySQL username in XAMPP
+        # 'PASSWORD': '',                          # Leave it empty for root, or add your password if you set one
+        # 'HOST': 'localhost',                     # Host (localhost for XAMPP)
+        # 'PORT': '3306',                          # Default MySQL port in XAMPP
+        
+        'ENGINE': os. getenv('DB_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': os.getenv('DB_NAME', BASE_DIR / 'db. sqlite3'),
+        'USER': os.getenv('DB_USER', ''),
+        'PASSWORD':  os.getenv('DB_PASSWORD', ''),
+        'HOST': os.getenv('DB_HOST', ''),
+        'PORT': os.getenv('DB_PORT', ''),
         
         # For MySQL(Oracle)
         # =====================================
@@ -160,14 +170,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'mehedi.saiyan@gmail.com'  # Your email address
-EMAIL_HOST_PASSWORD = 'pvdt baho hwqv mbbw'  # Your generated app password
-DEFAULT_FROM_EMAIL = 'mehedi.saiyan@gmail.com'
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 
 # SSLCOMMERZ SETTINGS
-SSLCOMMERZ_STORE_ID='patua671a59b3b6059'
-SSLCOMMERZ_PASSWORD='patua671a59b3b6059@ssl'
-SSLCOMMERZ_IS_SANDBOX=True
+SSLCOMMERZ_STORE_ID = os.getenv('SSLCOMMERZ_STORE_ID')
+SSLCOMMERZ_PASSWORD = os.getenv('SSLCOMMERZ_PASSWORD')
+SSLCOMMERZ_IS_SANDBOX = os.getenv('SSLCOMMERZ_IS_SANDBOX', 'True')

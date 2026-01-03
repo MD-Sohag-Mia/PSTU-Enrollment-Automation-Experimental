@@ -18,13 +18,14 @@ from django.urls import reverse
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Table, TableStyle
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Table, TableStyle, Image
 from django.shortcuts import get_object_or_404
 
 from StudentApp.models import Student, Student_Transaction
 from FacultyApp.models import Cost, Course
 
 from sslcommerz_lib import SSLCOMMERZ 
+import os
 
 
 # Create your views here.
@@ -411,16 +412,6 @@ def payment_history(request):
     response['Expires'] = '0'
     
     return response
-
-
-from django.http import HttpResponse
-from reportlab.lib.pagesizes import letter
-from reportlab.lib import colors
-from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Table, TableStyle, Image
-from django.shortcuts import get_object_or_404
-from .models import Student_Transaction  # Make sure you import your Transaction model
-import os
 
 def download_invoice(request, trx_id):
     # Get the transaction object
