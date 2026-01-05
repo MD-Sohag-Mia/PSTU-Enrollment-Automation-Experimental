@@ -9,24 +9,42 @@
 
 A comprehensive web-based enrollment and result management system built with Django for Patuakhali Science and Technology University (PSTU). This system automates the entire student enrollment process, course management, result generation, and payment processing.
 
+## 🌐 Live Demo
+
+**🚀 Application URL:** [https://pstuenrollment.pythonanywhere.com](https://pstuenrollment.pythonanywhere.com)
+
+The system is live and ready to explore! Jump to [Demo Accounts](#-live-demo--test-accounts) section for login credentials.
+
+---
+
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [System Architecture](#system-architecture)
-- [Technology Stack](#technology-stack)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+- [Live Demo](#-live-demo)
+- [Overview](#-overview)
+- [Features](#-features)
+- [System Architecture](#️-system-architecture)
+- [Technology Stack](#️-technology-stack)
+- [Prerequisites](#-prerequisites)
+- [Installation](#-installation)
+- [Configuration](#️-configuration)
+- [Usage](#-usage)
+- [Live Demo & Test Accounts](#-live-demo--test-accounts)
+- [Project Structure](#-project-structure)
+- [Key Models](#-key-models)
+- [Security Features](#-security-features)
+- [Common Issues and Solutions](#-common-issues-and-solutions)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Acknowledgments](#-acknowledgments)
+- [Contact](#-contact)
+
+---
 
 ## 🎯 Overview
 
-The PSTU Enrollment Automation System is designed to streamline the academic operations of university faculties.  It provides separate interfaces for Faculty Administrators, Teachers, and Students, enabling efficient management of courses, enrollments, examinations, and results.
+The PSTU Enrollment Automation System is designed to streamline the academic operations of university faculties. It provides separate interfaces for Faculty Administrators, Teachers, and Students, enabling efficient management of courses, enrollments, examinations, and results.
+
+---
 
 ## ✨ Features
 
@@ -91,6 +109,8 @@ The PSTU Enrollment Automation System is designed to streamline the academic ope
   - Check GPA and CGPA
   - Download result PDFs
 
+---
+
 ## 🏗️ System Architecture
 
 The system follows Django's MVT (Model-View-Template) architecture with four main applications:
@@ -99,6 +119,8 @@ The system follows Django's MVT (Model-View-Template) architecture with four mai
 2. **TeacherApp** - Teacher dashboard and mark entry
 3. **StudentApp** - Student enrollment and payments
 4. **ResultApp** - Result calculation and generation
+
+---
 
 ## 🛠️ Technology Stack
 
@@ -114,15 +136,19 @@ The system follows Django's MVT (Model-View-Template) architecture with four mai
   - pytz 2024.2 (Timezone management)
   - requests 2.32.3 (HTTP library)
 
+---
+
 ## 📦 Prerequisites
 
-Before you begin, ensure you have the following installed: 
+Before you begin, ensure you have the following installed:
 
 - Python 3.8 or higher
 - MySQL Server (or XAMPP with MariaDB)
 - pip (Python package manager)
 - Virtual environment (recommended)
 - Git
+
+---
 
 ## 🚀 Installation
 
@@ -148,7 +174,7 @@ source venv/bin/activate
 ### 3. Install Dependencies
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements. txt
 ```
 
 ### 4. Set Up Database
@@ -227,6 +253,8 @@ python manage.py runserver
 
 The application will be available at `http://127.0.0.1:8000/`
 
+---
+
 ## ⚙️ Configuration
 
 ### Email Setup (Gmail)
@@ -246,7 +274,7 @@ The application will be available at `http://127.0.0.1:8000/`
 
 ### Database Configuration
 
-The system supports both SQLite (development) and MySQL (production). To switch:
+The system supports both SQLite (development) and MySQL (production). To switch: 
 
 **For SQLite (Development):**
 ```python
@@ -259,6 +287,8 @@ DATABASES = {
 ```
 
 **For MySQL (Production):** Already configured via `.env` file
+
+---
 
 ## 📖 Usage
 
@@ -297,48 +327,105 @@ URL: `http://127.0.0.1:8000/student/login/`
 3. Make payments via SSLCOMMERZ
 4. View results and download transcripts
 
+---
+
+## 🎮 Live Demo & Test Accounts
+
+**🌐 Live Application:** [https://pstuenrollment.pythonanywhere.com](https://pstuenrollment.pythonanywhere.com)
+
+Experience the full system with these demo accounts: 
+
+| Role | Login URL | Username | Password |
+|------|-----------|----------|----------|
+| **🔧 Super Admin** | [Admin Panel](https://pstuenrollment.pythonanywhere.com/admin/) | `admin` | `admin` |
+| **🏛️ Faculty Admin** | [Faculty Portal](https://pstuenrollment.pythonanywhere.com/faculty_admin/login/) | `cseadmin` | `facultyofcse` |
+| **👨‍🏫 Teacher** | [Teacher Portal](https://pstuenrollment.pythonanywhere.com/teacher/login/) | `mahbubur.csit` | `deptofcsit` |
+| **🎓 Student** | [Student Portal](https://pstuenrollment.pythonanywhere.com/student/login/) | `mehedi.cse.16` | `studentofcse` |
+
+### 📋 What You Can Test
+
+✅ **Faculty Admin Features:**
+- Add/manage courses, teachers, and students
+- Assign courses to teachers
+- Generate semester results and PDFs
+- Promote students to next semester
+- Manage enrollment fees
+
+✅ **Teacher Features:**
+- View assigned courses
+- Enter marks (attendance, assignment, mid-term, final)
+- Generate and download mark sheets
+- Handle special/repeat exams
+
+✅ **Student Features:**
+- Enroll in semester courses
+- Make online payments (sandbox mode)
+- View payment history and download invoices
+- Check results and CGPA
+- Download result transcripts
+
+✅ **Payment Testing:**
+- Payment gateway is in **sandbox/test mode**
+- Use test card: `4111 1111 1111 1111`
+- Expiry: Any future date
+- CVV: Any 3 digits
+- No real money will be charged
+
+### ⚠️ Demo System Notice
+
+> **This is a demonstration environment with sample data.**
+>
+> - 🔒 Please be respectful and do not delete critical data
+> - 💳 All payments are in test mode (no real transactions)
+> - 🔄 Database may be reset periodically for maintenance
+> - 📧 Email notifications are functional (test emails may be sent)
+
+---
+
 ## 📁 Project Structure
 
 ```
 PSTU-Enrollment-Automation-Experimental/
 ├── FacultyApp/              # Faculty administration app
-│   ├── models. py           # Faculty, Department, Course, Cost models
-│   ├── views.py            # Admin dashboard and operations
-│   ├── urls.py             # URL routing
-│   └── templates/          # Faculty templates
+│   ├── models.py            # Faculty, Department, Course, Cost models
+│   ├── views. py             # Admin dashboard and operations
+│   ├── urls.py              # URL routing
+│   └── templates/           # Faculty templates
 │
-├── TeacherApp/             # Teacher portal app
-│   ├── models.py           # Teacher, Course_Instructor models
-│   ├── views. py            # Teacher dashboard and mark entry
-│   ├── urls. py             # URL routing
-│   └── templates/          # Teacher templates
+├── TeacherApp/              # Teacher portal app
+│   ├── models.py            # Teacher, Course_Instructor models
+│   ├── views. py             # Teacher dashboard and mark entry
+│   ├── urls.py              # URL routing
+│   └── templates/           # Teacher templates
 │
-├── StudentApp/             # Student portal app
-│   ├── models.py           # Student, Transaction models
-│   ├── views.py            # Student dashboard, enrollment, payment
-│   ├── urls. py             # URL routing
-│   └── templates/          # Student templates
+├── StudentApp/              # Student portal app
+│   ├── models.py            # Student, Transaction models
+│   ├── views. py             # Student dashboard, enrollment, payment
+│   ├── urls. py              # URL routing
+│   └── templates/           # Student templates
 │
-├── ResultApp/              # Result management app
-│   ├── models.py           # Course_Mark, Semester_Result models
-│   └── views.py            # Result calculation logic
+├── ResultApp/               # Result management app
+│   ├── models.py            # Course_Mark, Semester_Result models
+│   └── views.py             # Result calculation logic
 │
-├── PSTU_Enrollment/        # Main project directory
-│   ├── settings.py         # Project settings
-│   ├── urls. py             # Main URL configuration
-│   └── wsgi.py             # WSGI configuration
+├── PSTU_Enrollment/         # Main project directory
+│   ├── settings. py          # Project settings
+│   ├── urls.py              # Main URL configuration
+│   └── wsgi. py              # WSGI configuration
 │
-├── media/                  # User uploaded files
+├── media/                   # User uploaded files
 │   ├── students_profile_pics/
 │   └── teachers_profile_pics/
 │
-├── Documents/              # Project documentation
-├── . env. example            # Environment variables template
-├── . gitignore              # Git ignore file
-├── manage.py               # Django management script
-├── requirements.txt        # Python dependencies
-└── README.md               # This file
+├── Documents/               # Project documentation
+├── . env. example             # Environment variables template
+├── . gitignore               # Git ignore file
+├── manage.py                # Django management script
+├── requirements.txt         # Python dependencies
+└── README.md                # This file
 ```
+
+---
 
 ## 🎯 Key Models
 
@@ -365,6 +452,8 @@ PSTU-Enrollment-Automation-Experimental/
 - `Exam_Period` - Exam period configuration
 - `Special_Repeat` - Special exam settings
 
+---
+
 ## 🔒 Security Features
 
 - Environment-based configuration
@@ -375,9 +464,11 @@ PSTU-Enrollment-Automation-Experimental/
 - Cache control for sensitive pages
 - Secure payment gateway integration
 
+---
+
 ## 🐛 Common Issues and Solutions
 
-### Issue: Database Connection Error
+### Issue:  Database Connection Error
 **Solution:** Ensure MySQL is running and credentials in `.env` are correct
 
 ### Issue: Static Files Not Loading
@@ -389,6 +480,8 @@ PSTU-Enrollment-Automation-Experimental/
 ### Issue: Email Not Sending
 **Solution:** Check Gmail app password and enable "Less secure app access"
 
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please follow these steps:
@@ -399,18 +492,13 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+---
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👥 Contact
-
-**Mehedi Hasan Rabbi**
-
-- LinkedIn: [ultr4-instinct](https://www.linkedin.com/in/ultr4-instinct/)
-- GitHub: [@Mehedi-Hasan-Rabbi](https://github.com/Mehedi-Hasan-Rabbi)
-
-Project Link: [https://github.com/Mehedi-Hasan-Rabbi/PSTU-Enrollment-Automation-Experimental](https://github.com/Mehedi-Hasan-Rabbi/PSTU-Enrollment-Automation-Experimental)
+---
 
 ## 🙏 Acknowledgments
 
@@ -421,7 +509,27 @@ Project Link: [https://github.com/Mehedi-Hasan-Rabbi/PSTU-Enrollment-Automation-
 
 ---
 
-⭐ If you find this project helpful, please consider giving it a star! 
+## 👥 Contact
+
+**Mehedi Hasan Rabbi**
+
+- 📧 Email: mehedi.saiyan@gmail.com
+- 💼 LinkedIn: [ultr4-instinct](https://www.linkedin.com/in/ultr4-instinct/)
+- 🐙 GitHub: [@Mehedi-Hasan-Rabbi](https://github.com/Mehedi-Hasan-Rabbi)
+
+**Project Link:** [https://github.com/Mehedi-Hasan-Rabbi/PSTU-Enrollment-Automation-Experimental](https://github.com/Mehedi-Hasan-Rabbi/PSTU-Enrollment-Automation-Experimental)
+
+---
+
+<div align="center">
+
+⭐ **If you find this project helpful, please consider giving it a star! ** ⭐
+
+Made with ❤️ for PSTU
+
+</div>
+
+---
 
 [contributors-shield]: https://img.shields.io/github/contributors/Mehedi-Hasan-Rabbi/PSTU-Enrollment-Automation-Experimental.svg?style=for-the-badge
 [contributors-url]: https://github.com/Mehedi-Hasan-Rabbi/PSTU-Enrollment-Automation-Experimental/graphs/contributors
